@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>RHODESHACKS | VIP AUTH</title>
+    <meta charset="UTF-8">
+    <title>RHODESHACKS | VIP GATEWAY</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <video autoplay loop muted playsinline id="bg-video">
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <div class="container">
-        <h1>VIP ACCESS</h1>
-        <p>System Authorization Required</p>
-        <input type="text" id="loginHwid" placeholder="ENTER YOUR HWID">
-        <button onclick="loginWithHwid()">Identify Device</button>
-        <div id="status" style="margin-top: 15px; font-size: 0.8rem;"></div>
+        <h1>VIP GATEWAY</h1>
+        <p class="subtitle">System Authorization Required</p>
+        <input type="text" id="loginHwid" placeholder="TERMINAL ID (HWID)" autocomplete="off">
+        <button onclick="loginWithHwid()">Initialize Session</button>
+        <div id="status" style="margin-top: 20px; font-size: 0.8rem; letter-spacing: 1px;"></div>
     </div>
     <script src="script.js"></script>
 </body>
