@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>RHODESHACKS | DASHBOARD</title>
+    <meta charset="UTF-8">
+    <title>RHODESHACKS | COMMAND CENTER</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container" style="max-width: 600px;">
-        <h1>Dashboard</h1>
-        <p>Logged in as VIP Member</p>
+    <video autoplay loop muted playsinline id="bg-video">
+        <source src="background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container" style="max-width: 650px;">
+        <h1>Command Center</h1>
+        <p class="subtitle">VIP MEMBER SESSION ACTIVE</p>
         
         <div class="hwid-section">
-            <span style="font-size: 0.8rem; color: #ff4b2b;">ACTIVE DEVICE ID</span>
+            <span class="section-label">Active Terminal ID</span>
             <div class="hwid-box" id="hwidDisplay" onclick="revealAndCopy()">
                 <span id="hwidValue">LOADING...</span>
             </div>
-            <p style="font-size: 0.75rem;">Click to reveal and copy to clipboard.</p>
+            <p style="font-size: 0.7rem; color: #666; letter-spacing: 1px;">Click terminal block to unblur & copy to clipboard.</p>
         </div>
 
-        <div style="border-top: 1px solid #333; margin: 25px 0; padding-top: 25px;">
-            <p>Register New HWID Slot</p>
-            <input type="text" id="newHwid" placeholder="PASTE NEW HWID">
-            <button onclick="syncHwid()">Sync Device</button>
+        <div class="sync-area">
+            <p class="subtitle" style="margin-bottom: 20px;">Register New Terminal Slot</p>
+            <input type="text" id="newHwid" placeholder="PASTE NEW TERMINAL ID" autocomplete="off">
+            <button class="btn-sync" onclick="syncHwid()">Sync Device</button>
         </div>
 
         <a href="#" class="logout-link" onclick="logout()">Terminate Session</a>
