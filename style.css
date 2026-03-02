@@ -1,17 +1,18 @@
 :root {
-    --primary: #ff4b2b;
-    --secondary: #ff416c;
-    --bg-dark: #0a0a0a;
-    --card-bg: rgba(20, 20, 20, 0.8);
+    --primary: #00ff41; /* Hacking Green */
+    --primary-glow: rgba(0, 255, 65, 0.3);
+    --secondary: #ff0000; /* Gaming Red */
+    --secondary-glow: rgba(255, 0, 0, 0.3);
+    --bg-dark: #050505;
+    --card-bg: rgba(10, 10, 10, 0.85);
     --text-color: #e0e0e0;
+    --font-stack: 'SF Mono', Monaco, 'Courier New', monospace;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-stack); }
 
 body {
-    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #000000);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    background: var(--bg-dark);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -20,71 +21,141 @@ body {
     overflow: hidden;
 }
 
-@keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* --- The Custom Video Background --- */
+#bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    filter: brightness(30%) contrast(120%); /* Makes it subtle, not distracting */
+    object-fit: cover;
 }
 
-/* Glassmorphism Card */
+/* --- Glassmorphism Card (Enhanced) --- */
 .container {
     background: var(--card-bg);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 255, 65, 0.15); /* Subtle green border */
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7), 0 0 15px var(--primary-glow);
     width: 100%;
-    max-width: 450px;
+    max-width: 480px;
     text-align: center;
+    transition: box-shadow 0.3s ease;
 }
 
-h1 { font-size: 2rem; margin-bottom: 10px; letter-spacing: 3px; color: #fff; text-transform: uppercase; }
-p { color: #888; margin-bottom: 25px; font-size: 0.9rem; }
+.container:hover {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 25px var(--primary-glow);
+}
 
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    letter-spacing: 4px;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px var(--primary);
+}
+
+p.subtitle { color: #888; margin-bottom: 30px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; }
+
+/* Input Styling */
 input {
     width: 100%;
-    padding: 15px;
-    margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.05);
+    padding: 18px;
+    margin-bottom: 25px;
+    background: rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    color: #fff;
+    border-radius: 4px;
+    color: var(--primary); /* Green text in input */
     outline: none;
     transition: 0.3s;
+    font-size: 0.9rem;
 }
 
-input:focus { border-color: var(--primary); background: rgba(255, 255, 255, 0.1); }
+input:focus {
+    border-color: var(--primary);
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 10px var(--primary-glow);
+}
 
+/* Professional Button */
 button {
     width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(to right, var(--primary), var(--secondary));
-    color: white;
+    padding: 18px;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--primary);
     font-weight: bold;
     text-transform: uppercase;
+    letter-spacing: 2px;
     cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
 }
 
-button:hover { transform: translateY(-2px); opacity: 0.9; }
+button:hover {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 0 20px var(--primary);
+}
 
-/* Dashboard Specific */
+/* --- Dashboard Specific --- */
+.hwid-section { margin-bottom: 30px; }
+.section-label { font-size: 0.75rem; color: var(--secondary); text-transform: uppercase; letter-spacing: 2px; }
+
 .hwid-box {
     background: #000;
-    padding: 30px;
-    margin: 20px 0;
-    border: 1px solid #333;
-    border-radius: 12px;
+    padding: 35px;
+    margin: 15px 0;
+    border: 1px solid #222;
+    border-radius: 4px;
     cursor: pointer;
-    filter: blur(10px);
-    transition: 0.5s;
+    filter: blur(12px); /* Stronger initial blur for VIP feel */
+    transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
     font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+    word-break: break-all; /* Ensures long HWIDs don't break layout */
 }
 
-.hwid-box.unblurred { filter: blur(0); border-color: var(--primary); }
+.hwid-box.unblurred {
+    filter: blur(0);
+    border-color: var(--primary);
+    background: rgba(0, 255, 65, 0.05);
+    box-shadow: 0 0 15px var(--primary-glow);
+}
 
-.logout-link { color: #ff4b2b; text-decoration: none; font-size: 0.8rem; margin-top: 15px; display: block; }
+.sync-area {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin: 30px 0;
+    padding-top: 30px;
+}
+
+.btn-sync {
+    border-color: var(--secondary);
+    color: var(--secondary);
+}
+
+.btn-sync:hover {
+    background: var(--secondary);
+    color: #fff;
+    box-shadow: 0 0 20px var(--secondary-glow);
+}
+
+.logout-link {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.75rem;
+    margin-top: 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.logout-link:hover { color: var(--secondary); text-shadow: 0 0 5px var(--secondary); }
