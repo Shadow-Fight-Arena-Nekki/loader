@@ -1,36 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RHODESHACKS | VIP Dashboard</title>
+    <title>RHODESHACKS | DASHBOARD</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="panel">
-        <div class="header">
-            <h2>VIP CONTROL PANEL</h2>
-            <button class="logout-btn" onclick="logout()">Logout</button>
-        </div>
-
+    <div class="container" style="max-width: 600px;">
+        <h1>Dashboard</h1>
+        <p>Logged in as VIP Member</p>
+        
         <div class="hwid-section">
-            <p>Your Registered HWID:</p>
+            <span style="font-size: 0.8rem; color: #ff4b2b;">ACTIVE DEVICE ID</span>
             <div class="hwid-box" id="hwidDisplay" onclick="revealAndCopy()">
                 <span id="hwidValue">LOADING...</span>
             </div>
-            <p class="hint">Click the box to <b>Reveal & Copy</b> to clipboard</p>
+            <p style="font-size: 0.75rem;">Click to reveal and copy to clipboard.</p>
         </div>
 
-        <hr>
-
-        <div class="action-section">
-            <h3>Register New HWID Slot</h3>
-            <p>Paste an HWID below to authorize a new device instantly.</p>
-            <input type="text" id="newHwid" placeholder="Enter HWID from Loader...">
-            <button class="btn-sync" onclick="syncHwid()">SYNC TO DATABASE</button>
+        <div style="border-top: 1px solid #333; margin: 25px 0; padding-top: 25px;">
+            <p>Register New HWID Slot</p>
+            <input type="text" id="newHwid" placeholder="PASTE NEW HWID">
+            <button onclick="syncHwid()">Sync Device</button>
         </div>
+
+        <a href="#" class="logout-link" onclick="logout()">Terminate Session</a>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
