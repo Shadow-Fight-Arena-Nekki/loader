@@ -1,33 +1,90 @@
-/* Add this to your existing style.css */
-.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-.logout-btn { background: transparent; border: 1px solid #444; width: auto; padding: 5px 15px; font-size: 0.8rem; }
-.logout-btn:hover { background: #ff4444; border-color: #ff4444; }
+:root {
+    --primary: #ff4b2b;
+    --secondary: #ff416c;
+    --bg-dark: #0a0a0a;
+    --card-bg: rgba(20, 20, 20, 0.8);
+    --text-color: #e0e0e0;
+}
 
-hr { border: 0; border-top: 1px solid #333; margin: 30px 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
 
-.hint { font-size: 0.85rem; color: #888; margin-top: 10px; }
-.btn-sync { background: #28a745; margin-top: 10px; }
-.btn-sync:hover { background: #218838; }
+body {
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #000000);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    overflow: hidden;
+}
 
-/* The Blur Logic */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism Card */
+.container {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+h1 { font-size: 2rem; margin-bottom: 10px; letter-spacing: 3px; color: #fff; text-transform: uppercase; }
+p { color: #888; margin-bottom: 25px; font-size: 0.9rem; }
+
+input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus { border-color: var(--primary); background: rgba(255, 255, 255, 0.1); }
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
+}
+
+button:hover { transform: translateY(-2px); opacity: 0.9; }
+
+/* Dashboard Specific */
 .hwid-box {
     background: #000;
-    padding: 40px;
+    padding: 30px;
     margin: 20px 0;
-    border: 2px dashed #ff4444;
-    border-radius: 10px;
+    border: 1px solid #333;
+    border-radius: 12px;
     cursor: pointer;
-    font-size: 1.1rem;
-    font-family: monospace;
-    letter-spacing: 2px;
-    transition: all 0.4s ease;
-    filter: blur(12px); /* Default Blur */
-    user-select: none;
+    filter: blur(10px);
+    transition: 0.5s;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-.hwid-box.unblurred {
-    filter: blur(0px);
-    border: 2px solid #ff4444;
-    background: #111;
-    user-select: all;
-}
+.hwid-box.unblurred { filter: blur(0); border-color: var(--primary); }
+
+.logout-link { color: #ff4b2b; text-decoration: none; font-size: 0.8rem; margin-top: 15px; display: block; }
