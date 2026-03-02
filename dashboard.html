@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RHODESHACKS | VIP Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="panel">
+        <div class="header">
+            <h2>VIP CONTROL PANEL</h2>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+
+        <div class="hwid-section">
+            <p>Your Registered HWID:</p>
+            <div class="hwid-box" id="hwidDisplay" onclick="revealAndCopy()">
+                <span id="hwidValue">LOADING...</span>
+            </div>
+            <p class="hint">Click the box to <b>Reveal & Copy</b> to clipboard</p>
+        </div>
+
+        <hr>
+
+        <div class="action-section">
+            <h3>Register New HWID Slot</h3>
+            <p>Paste an HWID below to authorize a new device instantly.</p>
+            <input type="text" id="newHwid" placeholder="Enter HWID from Loader...">
+            <button class="btn-sync" onclick="syncHwid()">SYNC TO DATABASE</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
